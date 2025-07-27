@@ -10,6 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.List;
 
 public class GalaxyS24Slider {
@@ -20,15 +21,32 @@ public class GalaxyS24Slider {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://demo.nopcommerce.com/");
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
     @Test
     public void homeslider2(){
-        List<WebElement> sliders =wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector("a.nivo-imageLink"),1));
-        WebElement secondSlider = sliders.get(1);
-        wait.until(ExpectedConditions.elementToBeClickable(secondSlider)).click();
-        wait.until(ExpectedConditions.urlContains("nopcommerce.com"));
+        WebElement img2 = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(
+                        By.cssSelector("img[src*='0000080_banner_2.webp']")));
+
+        // Step 2: Click the second slider
+        img2.click();
+
+
+        System.out.println("Clicked first slider - malak");
+
+
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button.button-1.search-box-button")));
+        System.out.println("malak");
+
+
+
         String actualUrl = driver.getCurrentUrl();
-        String expectedUrl = "https://demo.nopcommerce.com/samsung-galaxy-s24-256gb";
-        Assert.assertEquals(actualUrl, expectedUrl);
+        System.out.println("Actual URL: " + actualUrl);
+
+        String expectedUrl = "https://demo.nopcommerce.com/samsung-galaxy-s24-256gb";  // <-- adjust this based on actual banner link
+        System.out.println("Expected URL: " + expectedUrl);
+
+        Assert.assertEquals(actualUrl, expectedUrl, "Slider redirection URL mismatch.");
     }
 }
