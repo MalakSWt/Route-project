@@ -41,7 +41,7 @@ public class SearchSKU {
             WebElement skuElement = driver.findElement(By.cssSelector(".sku > span.value"));
             String displayedSKU = skuElement.getText().trim().toUpperCase();
 
-            System.out.println("✅ Found SKU on product page: " + displayedSKU);
+            System.out.println(" Found SKU on product page: " + displayedSKU);
 
             Assert.assertTrue(displayedSKU.contains(sku),
                     " SKU mismatch: Expected to contain '" + sku + "', but was '" + displayedSKU + "'");
