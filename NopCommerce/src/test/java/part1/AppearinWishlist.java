@@ -35,7 +35,7 @@ public class AppearinWishlist {
             }
         }
 
-        Assert.assertNotNull(htcProduct, "❌ HTC product not found on homepage!");
+        Assert.assertNotNull(htcProduct, " HTC product not found on homepage!");
 
         // Step 2: Click wishlist button for HTC product
         WebElement wishlistButton = htcProduct.findElement(By.cssSelector("button[title='Add to wishlist']"));
@@ -57,11 +57,11 @@ public class AppearinWishlist {
                 By.cssSelector("input.qty-input")));
 
         String qtyValue = qtyInput.getAttribute("value"); // e.g., "1"
-        System.out.println("✅ Quantity value: " + qtyValue);
+        System.out.println(" Quantity value: " + qtyValue);
 
         int qty = Integer.parseInt(qtyValue);
-        Assert.assertTrue(qty > 0, "❌ Quantity is not greater than 0");
-        System.out.println("✅ Wishlist quantity assertion passed.");
+        Assert.assertTrue(qty > 0, " Quantity is not greater than 0");
+        System.out.println(" Wishlist quantity assertion passed.");
     }
 
    

@@ -23,7 +23,7 @@ public class SearchSKU {
         String[] skus = {"SCI_FAITH", "APPLE_CAM", "SF_PRO_11"};
 
         for (String sku : skus) {
-            System.out.println("🔎 Searching by SKU: " + sku);
+            System.out.println(" Searching by SKU: " + sku);
 
 
             WebElement searchInput = driver.findElement(By.id("small-searchterms"));

@@ -43,30 +43,30 @@ public class SuccMsgWishlist {
                 WebElement successMessage = wait.until(d -> d.findElement(By.cssSelector(".bar-notification.success")));
 
                 // Step 5a: Assert message is displayed
-                softAssert.assertTrue(successMessage.isDisplayed(), "❌ Success message is not displayed");
+                softAssert.assertTrue(successMessage.isDisplayed(), " Success message is not displayed");
 
                 // Step 5b: Assert message text
                 String messageText = successMessage.getText().trim();
                 softAssert.assertTrue(messageText.contains("The product has been added to your wishlist"),
-                        "❌ Success message text incorrect: " + messageText);
+                        " Success message text incorrect: " + messageText);
 
                 // Step 5c: Assert background color is green
                 String rgba = successMessage.getCssValue("background-color");
                 String hexColor = rgbaToHex(rgba);
-                System.out.println("✅ Success message background color (HEX): " + hexColor);
-                softAssert.assertEquals(hexColor, "#4bb07a", "❌ Background color is not green");
+                System.out.println(" Success message background color (HEX): " + hexColor);
+                softAssert.assertEquals(hexColor, "#4bb07a", " Background color is not green");
 
-                break; // Stop after finding the HTC product
+                break;
             }
         }
 
-        softAssert.assertTrue(productFound, "❌ HTC smartphone product not found on homepage");
+        softAssert.assertTrue(productFound, " HTC smartphone product not found on homepage");
         softAssert.assertAll();
     }
 
 
 
-    // Utility: Convert RGBA color to HEX
+
     private String rgbaToHex(String rgba) {
         String[] parts = rgba.replace("rgba(", "").replace(")", "").split(",");
         int r = Integer.parseInt(parts[0].trim());
